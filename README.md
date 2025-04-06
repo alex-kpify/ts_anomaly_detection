@@ -1,4 +1,4 @@
-# Análise de Séries Temporais e Detecção de Anomalias
+# Detecção de Anomalias em Séries Temporais
 
 Este projeto implementa uma análise de séries temporais para detecção de anomalias em processos operacionais, utilizando técnicas estatísticas e visualização de dados a partir de um arquivo CSV estruturado.
 
