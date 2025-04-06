@@ -31,7 +31,7 @@ Onde:
 A detecção final de anomalia utiliza um limiar baseado na mediana e no Median Absolute Deviation (MAD) dos scores calculados para todos os processos, tornando o método robusto a outliers nos próprios scores:
 
 $$
-\text{Limite Anomalia} = Mediana_ScoreAnomaly + 3 \times MAD_ScoreAnomaly
+\text{Limite Anomalia} = Mediana_{ScoreAnomaly} + 3 \times MAD_{ScoreAnomaly}
 $$
 
 Um processo é considerado anômalo se seu `score_anomaly` excede este limite.
