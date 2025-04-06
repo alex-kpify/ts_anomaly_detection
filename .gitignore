@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANUAL*
+
+# Virtualenv
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Poetry
+# NUNCA adicione poetry.lock ao .gitignore em aplicações
+# Mantenha-o para garantir instalações determinísticas.
+# Adicione apenas se for uma biblioteca pura.
+# poetry.lock 
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Arquivos gerados pelo projeto
+outputs/*
+!outputs/.gitkeep
+data/*.csv~
+data/*.xlsx~
+*.png
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db 
+
+# Pastas antigas
+_old/*

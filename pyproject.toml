@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "ts_anomaly_detection"
+version = "1.0.0"
+description = "Análise de séries temporais e detecção de anomalias em processos operacionais."
+authors = ["Seu Nome <seu.email@example.com>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.0.0"
+numpy = "^1.24.0"
+matplotlib = "^3.7.0"
+statsmodels = "^0.14.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+black = "^23.9.0"
+flake8 = "^6.1.0"
+isort = "^5.12.0"
+jupyter = "^1.0.0"
+ipykernel = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
