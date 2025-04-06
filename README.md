@@ -18,28 +18,27 @@ Este projeto implementa uma análise de séries temporais para detecção de ano
 
 O score de anomalia é calculado da seguinte forma:
 
-\[
-\text{score\_anomaly} = \text{CV} \times \text{autocorr\_max\_diff}
-\]
+$
+\text{Score-anomaly} = \text{CV} \times \text{ACF}_\text{max}
+$
 
 Onde:
-- **CV (Coeficiente de Variação):** `(desvio_padrão / média) * 100`. Mede a dispersão dos dados em relação à média. Valores altos indicam maior variabilidade relativa.
-- **autocorr_max_diff:** Valor absoluto máximo da função de autocorrelação (ACF) calculada sobre a série temporal *diferenciada* (diferença entre valores consecutivos), ignorando o lag 0. Um valor alto sugere que, mesmo após remover a tendência de curto prazo (pela diferenciação), ainda existe uma estrutura de dependência temporal significativa (ex: sazonalidade, ciclos).
+- $CV$ (Coeficiente de Variação): `(desvio_padrão / média) * 100`. Mede a dispersão dos dados em relação à média. Valores altos indicam maior variabilidade relativa.
+- $\text{ACF}_\text{max}$: Valor máximo da função de autocorrelação (ACF) calculada sobre a série temporal *diferenciada* (diferença entre valores consecutivos), ignorando o lag 0. Um valor alto sugere que, mesmo após remover a tendência de curto prazo (pela diferenciação), ainda existe uma estrutura de dependência temporal significativa (ex: sazonalidade, ciclos).
 
-**Racional:** A multiplicação destas duas métricas visa destacar processos que são simultaneamente **muito variáveis** (CV alto) e que possuem **padrões temporais fortes** mesmo após a diferenciação (autocorr_max_diff alto). A hipótese é que tais processos são mais propensos a serem considerados "anômalos" ou, pelo menos, de interesse para investigação mais aprofundada em comparação com processos estáveis ou com variações puramente aleatórias.
+**Racional:** A multiplicação destas duas métricas visa destacar processos que são simultaneamente **muito variáveis** (CV alto) e que possuem **padrões temporais fortes** mesmo após a diferenciação (ACF alto). A hipótese é que tais processos são mais propensos a serem considerados "anômalos" ou, pelo menos, de interesse para investigação mais aprofundada em comparação com processos estáveis ou com variações puramente aleatórias.
 
-A detecção final de anomalia utiliza um limiar baseado na mediana e no MAD dos scores calculados para todos os processos, tornando o método robusto a outliers nos próprios scores:
+A detecção final de anomalia utiliza um limiar baseado na mediana e no Median Absolute Deviation (MAD) dos scores calculados para todos os processos, tornando o método robusto a outliers nos próprios scores:
 
-\[
+$
 \text{Limite Anomalia} = \text{Mediana}(\text{score\_anomaly}) + 3 \times \text{MAD}(\text{score\_anomaly})
-\]
+$
 
 Um processo é considerado anômalo se seu `score_anomaly` excede este limite.
 
 ## Estrutura do Projeto
 
-```
-.
+```grapql
 ├── .gitignore
 ├── .python-version       # Define a versão Python (ex: 3.10.0)
 ├── README.md             # Este arquivo
@@ -129,10 +128,4 @@ Um processo é considerado anômalo se seu `score_anomaly` excede este limite.
     - Para cada `CD_OPR`, gerar um gráfico ACF (Série, ACF Original, ACF Diferenciada) em `outputs/figures/acf_cd_opr_XXXXX.png`.
     - Imprimir as métricas ACF (máximo original e diferenciado) no console.
 
-## Contribuindo
 
-Contribuições são bem-vindas! Por favor, abra uma issue ou um pull request.
-
-## Licença
-
-(Defina sua licença aqui, ex: MIT)
