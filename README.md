@@ -18,9 +18,9 @@ Este projeto implementa uma análise de séries temporais para detecção de ano
 
 O score de anomalia é calculado da seguinte forma:
 
-$
+$$
 \text{Score-anomaly} = \text{CV} \times \text{ACF}_\text{max}
-$
+$$
 
 Onde:
 - $CV$ (Coeficiente de Variação): `(desvio_padrão / média) * 100`. Mede a dispersão dos dados em relação à média. Valores altos indicam maior variabilidade relativa.
@@ -30,9 +30,9 @@ Onde:
 
 A detecção final de anomalia utiliza um limiar baseado na mediana e no Median Absolute Deviation (MAD) dos scores calculados para todos os processos, tornando o método robusto a outliers nos próprios scores:
 
-$
+$$
 \text{Limite Anomalia} = \text{Mediana}(\text{score\_anomaly}) + 3 \times \text{MAD}(\text{score\_anomaly})
-$
+$$
 
 Um processo é considerado anômalo se seu `score_anomaly` excede este limite.
 
